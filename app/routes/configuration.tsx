@@ -1,13 +1,17 @@
 import { useEffect } from "react";
 import type { Route } from "./+types/configuration";
-import ConnectionCard from "../components/connectionCard";
+import ConnectionCard from "../components/configuration/connectionCard";
 import Navbar from "~/components/navbar";
 import { useNavbar } from "~/context/NavbarTitleContext";
+import TestControlCard from "~/components/configuration/testControlCard";
 
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Configuración" },
-    { name: "description", content: "Bienvenido a la página de configuración de trivia digital!" },
+    {
+      name: "description",
+      content: "Bienvenido a la página de configuración de trivia digital!",
+    },
   ];
 }
 
