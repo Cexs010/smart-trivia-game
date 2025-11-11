@@ -3,15 +3,17 @@
 :root {
   --color-primario: #8F42CD;
   --color-secundario: linear-gradient(90deg, #2B2B30 0%, #302B63 50%, #2C5364 100%);
-  --color-fondo: #f9fafb;
-  --color-texto: #111827;
 }
 
 html,
 body {
   font-family: "Rubik", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
-  letter-spacing: .3rem;
+  letter-spacing: .1rem;
+  background: linear-gradient(90deg, #2B2B30 0%, #302B63 50%, #2C5364 100%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
