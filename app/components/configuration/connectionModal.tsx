@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useESP } from "~/context/ESPContext";
 
 interface ConnectionModalProps {
   onClose: () => void; // función para cerrar el modal
@@ -7,6 +8,7 @@ interface ConnectionModalProps {
 export default function ConnectionModal({ onClose }: ConnectionModalProps) {
   const [ipAddress, setIpAddress] = useState("");
   const [status, setStatus] = useState("");
+  const { setIp } = useESP();
 
   async function connectToESP32() {
     if (!ipAddress) {
@@ -15,10 +17,11 @@ export default function ConnectionModal({ onClose }: ConnectionModalProps) {
     }
 
     try {
-      setStatus("Conectando...");
+      setStatus("Verificando conexión...");
       const response = await fetch(`http://${ipAddress}/status`);
       if (response.ok) {
         setStatus("Conectado correctamente a la ESP32.");
+        setIp(ipAddress);
       } else {
         setStatus("Error al conectar con la ESP32.");
       }
@@ -52,7 +55,7 @@ export default function ConnectionModal({ onClose }: ConnectionModalProps) {
             onClick={onClose}
             className="bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-400 transition"
           >
-            Cancelar
+            Salir
           </button>
         </div>
 
