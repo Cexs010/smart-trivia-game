@@ -19,7 +19,7 @@ export default function Home() {
         <button
           type="submit"
           onClick={() => navigate("/configuration")}
-          className="px-6 w-lg py-3 text-4xl text-white rounded-lg shadow-md hover:shadow-lg active:shadow-sm active:translate-y-1 transition-all duration-100"
+          className="px-6 w-lg py-3 text-4xl text-white hover:opacity-90 rounded-lg shadow-md hover:shadow-lg active:shadow-sm active:translate-y-1 transition-all duration-100"
           style={{ background: "var(--color-secundario)" }}
         >
           Comenzar
