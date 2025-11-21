@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { Route } from "./+types/configuration";
 import Navbar from "~/components/navbar";
 import { useNavbar } from "~/context/NavbarTitleContext";
 import OptionCard from "~/components/gameOptions/optionCard";
+import AddUsers from "~/components/gameOptions/addUsers";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -16,6 +17,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function GameOptions() {
   const { setTitle } = useNavbar();
+  const [users, setUsers] = useState<any[]>([]);
 
   useEffect(() => {
     setTitle(document.title);
@@ -24,8 +26,13 @@ export default function GameOptions() {
   return (
     <>
       <Navbar />
-      <main className="flex h-screen items-center justify-center text-white">
-        <OptionCard />
+
+      <main className="flex h-screen items-center justify-center text-white p-4">
+        {!users.length ? (
+          <AddUsers onComplete={(u) => setUsers(u)} />
+        ) : (
+          <OptionCard users={users} />
+        )}
       </main>
     </>
   );
