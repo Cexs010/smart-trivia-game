@@ -4,6 +4,7 @@ import ConnectionCard from "../components/configuration/connectionCard";
 import Navbar from "~/components/navbar";
 import { useNavbar } from "~/context/NavbarTitleContext";
 import TestControlCard from "~/components/configuration/testControlCard";
+import { useESP } from "~/context/ESPContext";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -17,7 +18,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Configuration() {
   const { setTitle } = useNavbar();
-
+  const { ip } = useESP();
   useEffect(() => {
     setTitle(document.title);
   }, [setTitle]);
@@ -26,7 +27,8 @@ export default function Configuration() {
     <>
       <Navbar />
       <main className="flex h-screen items-center justify-center text-white">
-        <ConnectionCard />
+        {!ip && <ConnectionCard />}
+        {ip && <TestControlCard />}
       </main>
     </>
   );
