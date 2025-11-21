@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useESP } from "~/context/ESPContext";
+import toast from "react-hot-toast";
 
 interface ConnectionModalProps {
   onClose: () => void; // función para cerrar el modal
@@ -9,7 +10,6 @@ export default function ConnectionModal({ onClose }: ConnectionModalProps) {
   const [ipAddress, setIpAddress] = useState("");
   const [status, setStatus] = useState("");
   const { setIp } = useESP();
-
   async function connectToESP32() {
     if (!ipAddress) {
       setStatus("Ingresa una dirección IP.");
@@ -21,6 +21,7 @@ export default function ConnectionModal({ onClose }: ConnectionModalProps) {
       const response = await fetch(`http://${ipAddress}/status`);
       if (response.ok) {
         setStatus("Conectado correctamente a la ESP32.");
+        toast.success("Conexión exitosa a la ESP32!");
         setIp(ipAddress);
       } else {
         setStatus("Error al conectar con la ESP32.");

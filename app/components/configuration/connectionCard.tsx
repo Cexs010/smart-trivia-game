@@ -10,7 +10,7 @@ export default function ConnectionCard() {
   const navigate = useNavigate();
   
   return (
-    <div className="connection-card bg-[#F0F0F0] backdrop-blur-md rounded-lg p-8 flex flex-col gap-y-9 items-center shadow-lg">
+    <div className="connection-card bg-white backdrop-blur-md rounded-lg p-8 flex flex-col gap-y-9 items-center shadow-lg">
       <h2 className="text-2xl font-bold text-black/90">
         ¡Verifica conexión con el mando!
       </h2>
